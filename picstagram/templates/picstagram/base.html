@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+<script src="http://code.jquery.com/jquery-latest.min.js" type="text/javascript"></script>
+
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+</head>
+
+<!-- Layout for the basic navigation bar -->
+<body style= 'background-color: grey'>
+
+<nav class="navbar navbar-default">
+	<div class="container-fluid">
+		<div class="navbar-header">
+			<a class="navbar-brand" href="{% url 'picstagram:index' %}">Picstagram</a>
+		</div>
+		        
+		<ul class="nav navbar-nav navbar-right">
+                <li class="{% block allpictures_active %}{% endblock %}"><a href="{% url 'picstagram:index' %}">ViewImages</a></li>&nbsp;
+		
+				<li>
+					<a href="{% url 'picstagram:create_pictures'%}">
+                    <span class="glyphicon glyphicon-plus" aria-hidden="true"></span> Add Image
+					</a>
+				</li>
+			
+	{% if user.is_authenticated %}
+				  <li>
+                    <a href="{% url 'picstagram:logout_user' %}">
+                        <span class="glyphicon glyphicon-off" aria-hidden="true"></span>Logout
+                    </a>
+                </li>
+	{% else %}
+				  <li>
+                    <a href="{% url 'picstagram:logout_user' %}">
+                        <span class="glyphicon glyphicon-off" aria-hidden="true"></span>Login
+                    </a>
+                </li>
+	{%endif%}
+	</ul>
+	</div>
+</nav>
+
+{% block body %}
+{% endblock %}	
+</body>
+</html>

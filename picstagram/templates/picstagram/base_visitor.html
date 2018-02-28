@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<!--An html file that directs the visiter to login and register page -->
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+
+</head>
+
+<body>
+<nav class="navbar navbar-inverse">
+    <div class="container-fluid">
+
+        <!-- Headerbrand Picstagram -->
+        <div class="navbar-header">
+          
+            <a class="navbar-brand" href="{% url 'picstagram:index' %}">Picstagram</a>
+        </div>
+
+        <!-- Other Nav bar buttons -->
+        <div class="collapse navbar-collapse" id="topNavBar">
+            <ul class="nav navbar-nav navbar-right">
+				<li> <a href="{%url 'picstagram:index'%}">View All Images </a></li><!-- Displays all the images to visitors -->
+                <li class="{% block register_active %}{% endblock %}"><a href="{% url 'picstagram:register' %}">Register</a></li>  <!-- if the visitor wants to make an account -->
+                <li class="{% block login_active %}{% endblock %}"><a href="{% url 'picstagram:login_user' %}">Log In</a></li><!-- directs to the login page -->
+            </ul>
+        </div>
+
+    </div>
+</nav>
+{% block body %}
+{% endblock %}
+</body>
+</html>
